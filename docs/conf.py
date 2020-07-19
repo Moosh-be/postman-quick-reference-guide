@@ -22,6 +22,7 @@
 project = u'Postman Quick Reference Guide'
 copyright = u'2018-2020, Valentin Despa'
 author = u'Valentin Despa'
+translator = u'Christophe Gesché'
 
 # The short X.Y version
 version = u''
