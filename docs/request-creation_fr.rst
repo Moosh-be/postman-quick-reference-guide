@@ -2,7 +2,7 @@
 Demande de création
 *******************
 
-J'ai une variable d'environnement comme {‌{url}}. Puis-je l'utiliser dans un script (comme pm.sendRequest) ?
+J'ai une variable d'environnement comme {{url}}. Puis-je l'utiliser dans un script (comme pm.sendRequest) ?
 -----------------------------------------------------------------------------------------------------------
 
 La syntaxe suivante ne fonctionnera pas lors de l'écriture de scripts: ::
