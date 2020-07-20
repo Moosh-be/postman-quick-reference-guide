@@ -7,7 +7,7 @@ Comment définir un délai lors de l'exécution d'une collection ?
 
 Vous avez une collection et avez l'obligation d'ajouter un délai de 10 secondes après chaque demande.
 
-Pour ce faire, vous pouvez utiliser le paramètre ``--delay '' et spécifier un délai en millisecondes. ::
+Pour ce faire, vous pouvez utiliser le paramètre ``--delay`` et spécifier un délai en millisecondes. ::
 
     newman run collection.json --delay 10000
 
