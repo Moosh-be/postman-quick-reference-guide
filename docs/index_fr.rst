@@ -13,7 +13,7 @@ Cheatsheet
    :maxdepth: 2
    :caption: Contents:
 
-   cheatsheet
+   cheatsheet_fr
 
 Dynamic variables
 -----------------------------------
@@ -21,7 +21,7 @@ Dynamic variables
 .. toctree::
    :maxdepth: 2
 
-   dynamic-variables.rst
+   dynamic-variables_fr.rst
 
 Simple solutions to common problems
 -----------------------------------
@@ -31,8 +31,8 @@ Simple solutions to common problems
 
    request-creation
    assertions_fr
-   schema-validation
-   libraries
+   schema-validation_fr
+   libraries_fr
    workflows_fr
    newman_fr
 
