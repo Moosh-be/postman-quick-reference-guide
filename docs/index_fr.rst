@@ -29,7 +29,7 @@ Simple solutions to common problems
 .. toctree::
    :maxdepth: 2
 
-   request-creation
+   request-creation_fr
    assertions_fr
    schema-validation_fr
    libraries_fr
