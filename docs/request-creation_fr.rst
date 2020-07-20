@@ -2,7 +2,7 @@
 Demande de création
 *******************
 
-J'ai une variable d'environnement comme {‌{url}}. Puis-je l'utiliser dans un script (comme pm.sendRequest) ?
+J'ai une variable d'environnement comme {{url}}. Puis-je l'utiliser dans un script (comme pm.sendRequest) ?
 -----------------------------------------------------------------------------------------------------------
 
 La syntaxe suivante ne fonctionnera pas lors de l'écriture de scripts: ::
@@ -48,7 +48,7 @@ Vous pouvez effectuer les opérations suivantes dans le script de pré-requête:
     // JSON.stringify va sérialiser l'objet afin que Postman puisse l'enregistrer
     pm.globals.set('user', JSON.stringify(user));
 
-Dans le corps de la demande, vous pouvez simplement utiliser ``{{user}} ``.
+Dans le corps de la demande, vous pouvez simplement utiliser ``{{user}}``.
 Cela fonctionne aussi bien pour les objets imbriqués: ::
 
     {

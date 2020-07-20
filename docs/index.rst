@@ -14,6 +14,7 @@ Cheatsheet
    :caption: Contents:
 
    cheatsheet
+   index_fr
 
 Dynamic variables
 -----------------------------------
@@ -23,7 +24,7 @@ Dynamic variables
 
    dynamic-variables.rst
 
-Simple solutions to common problems 
+Simple solutions to common problems
 -----------------------------------
 
 .. toctree::
