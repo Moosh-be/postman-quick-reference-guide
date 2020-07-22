@@ -167,7 +167,8 @@ Ne peut être supprimé que du fichier CSV ou JSON.
 
 
 Variables locales
----------------
+-----------------
+
 Les variables locales ne sont disponibles qu'avec la requête qui les a définies ou lors de l'utilisation de Newman / Collection runner pendant toute l'execution.
 
 ** Quand utiliser: **
