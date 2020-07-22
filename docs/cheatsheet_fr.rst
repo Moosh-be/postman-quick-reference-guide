@@ -283,7 +283,7 @@ Correspondance partielle / le corps contient: ::
 
     pm.expect(pm.response.text()).to.include('Order placed.');
 
-**Réponses JSON **
+**Réponses JSON**
 
 Analyser le corps (besoin de toutes les assertions): ::
 
@@ -312,13 +312,13 @@ Ignorer des tests
 Vous pouvez utiliser `pm.test.skip` pour sauter un test.
 Les tests ignorés seront affichés dans les rapports.
 
-** Exemple simple ** ::
+**Exemple simple** ::
 
     pm.test.skip("Status code is 200", () => {
         pm.response.to.have.status(200);
     });
 
-** Saut conditionnel ** ::
+**Saut conditionnel** ::
 
     const shouldBeSkipped = true; // une condition
 
@@ -390,7 +390,7 @@ Full-option **HTTP POST request with JSON body**: ::
         console.log(response.json());
     });
 
-** Envoi d'un fichier avec demande POST form-data **
+**Envoi d'un fichier avec demande POST form-data**
 
 Pour des raisons de sécurité, il n'est pas possible de télécharger un fichier à partir d'un script à l'aide de pm.sendRequest. Vous ne pouvez pas lire ou écrire des fichiers à partir de scripts.
 
@@ -399,7 +399,7 @@ Postman Echo
 
 API Helper pour tester les demandes. Pour en savoir plus: https://docs.postman-echo.com.
 
-** Obtenir l'heure UTC actuelle via le script de pré-requête ** ::
+**Obtenir l'heure UTC actuelle via le script de pré-requête** ::
 
     pm.sendRequest('https://postman-echo.com/time/now', function (err, res) {
         if (err) { console.log(err); }
