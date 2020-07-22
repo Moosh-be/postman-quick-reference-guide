@@ -25,7 +25,7 @@ Obtention de variables dans le générateur de demandes
 
 En fonction de la portée la plus proche:
 
-Syntaxe: ``{{myVariable}}``
+Syntaxe: ``{{maVariable}}``
 
 **Exemples**:
 
@@ -52,21 +52,21 @@ Supprimez les variables une fois qu'elles ne sont plus nécessaires.
 
 .. code-block:: javascript
 
-    pm.globals.set('myVariable', MY_VALUE);
+    pm.globals.set('maVariable', MA_VALEUR);
 
 **Lire** ::
 
-    pm.globals.get('myVariable');
+    pm.globals.get('maVariable');
 
 Alternativement, selon la portée: ::
 
-    pm.variables.get('myVariable');
+    pm.variables.get('maVariable');
 
 **Supprimer**
 
 Supprimer une variable:
 
-    pm.globals.unset('myVariable');
+    pm.globals.unset('maVariable');
 
 Supprimer TOUTES les variables globales (plutôt inhabituel) ::
 
@@ -80,135 +80,136 @@ Variables de collection
 - bonne alternative aux variables globales ou aux variables d'environnement
 - pour les URL / informations d'authentification si un seul environnement existe
 
-**Setting** ::
+**Ecrire** ::
 
-    pm.collectionVariables.set('myVariable', MY_VALUE);
+    pm.collectionVariables.set('maVariable', MA_VALEUR);
 
-**Getting** ::
+**Lire** ::
 
-    pm.collectionVariables.get('myVariable');
+    pm.collectionVariables.get('maVariable');
 
-**Removing** ::
+**Supprimer** ::
 
-    pm.collectionVariables.unset('myVariable');
+    pm.collectionVariables.unset('maVariable');
 
 
-Environment variables
----------------------
+Variables d'environment
+-----------------------
 
-Environment variables are tied to the selected environment. Good alternative to global variables as they have a narrower scope.
+Les variables d'environnement sont liées à l'environnement sélectionné.
+Bonne alternative aux variables globales car elles ont une portée plus étroite.
 
-**When to use:**
+** Quand utiliser: **
 
-- storing environment specific information
-- URLs, authentication credentials
-- passing data to other requests
+- stockage des informations spécifiques à l'environnement
+- URL, informations d'authentification
+- transmettre des données à d'autres demandes
 
-**Setting** ::
+**Ecrire** ::
 
-    pm.environment.set('myVariable', MY_VALUE);
+    pm.environment.set('maVariable', MA_VALEUR);
 
-**Getting** ::
+**Lire** ::
 
-    pm.environment.get('myVariable');
+    pm.environment.get('maVariable');
 
-Depending on the closest scope: ::
+En fonction de la portée la plus proche: ::
 
-    pm.variables.get('myVariable');
+    pm.variables.get('maVariable');
 
-**Removing**
+**Supprimer**
 
-Remove one variable ::
+Supprimer une variable ::
 
-    pm.environment.unset("myVariable");
+    pm.environment.unset("maVariable");
 
-Remove ALL environment variables ::
+Supprimer toutes les variables d'environment ::
 
     pm.environment.clear();
 
-**Examples**: ::
+**Exemples**: ::
 
     pm.environment.set('name', 'John Doe');
     console.log(pm.environment.get('name'));
     console.log(pm.variables.get('name'));
 
-** Detecting the environment name **
+** Détection du nom de l'environnement **
 
-If you need to know inside scripts which environment is currently active (locahost, production, ...) you can use the name property: ::
+Si vous avez besoin de savoir à l'intérieur des scripts quel environnement est actuellement actif (locahost, production, ...) vous pouvez utiliser la propriété name: ::
 
     pm.environment.name
 
 
+Variables de données
+--------------------
 
-Data variables
---------------
+Existe uniquement lors de l'exécution d'une itération (créée par Collection Runner ou Newman).
 
-Exist only during the execution of an iteration (created by the Collection Runner or Newman).
+** Quand utiliser: **
 
-**When to use:**
+- lorsque plusieurs ensembles de données sont nécessaires
 
-- when multiple data-sets are needed
+**Ecrire**
 
-**Setting**
+Ne peut être défini qu'à partir d'un fichier CSV ou JSON.
 
-Can only be set from a CSV or a JSON file.
+**Lire** ::
 
-**Getting** ::
+    pm.iterationData.get('maVariable);
 
-    pm.iterationData.get('myVariable);
+En fonction de la portée la plus proche: ::
 
-Depending on the closest scope: ::
+    pm.variables.get('maVariable');
 
-    pm.variables.get('myVariable');
+**Supprimer**
 
-**Removing**
+Ne peut être supprimé que du fichier CSV ou JSON.
 
-Can only be removed from within the CSV or JSON file.
 
-Local variables
+Variables locales
 ---------------
+Les variables locales ne sont disponibles qu'avec la requête qui les a définies ou lors de l'utilisation de Newman / Collection runner pendant toute l'execution.
 
-Local variables are only available withing the request that has set them or when using Newman / Collection runner during the entire exection.
+** Quand utiliser: **
 
-**When to use:**
+- chaque fois que vous souhaitez remplacer toutes les autres portées de variables — pour une raison quelconque.
+Je ne suis pas sûr que cela soit nécessaire.
 
-- whenever you would like to override all other variable scopes — for whatever reason. Not sure though then this is needed.
+**Ecrire** ::
 
-**Setting** ::
+    pm.variables.set('maVariable', MA_VALEUR);
 
-    pm.variables.set('myVariable', MY_VALUE);
+**Lire** ::
 
-**Getting** ::
+    pm.variables.get('maVariable', MA_VALEUR);
 
-    pm.variables.get('myVariable', MY_VALUE);
+**Supprimer**
 
-**Removing**
+Les variables locales sont automatiquement supprimées une fois les tests exécutés.
 
-Local variables are automatically removed once the tests have been executed.
+Variables dynamiques
+--------------------
 
-Dynamic variables
------------------
+Toutes les variables dynamiques peuvent être combinées avec des chaînes, afin de générer des données dynamiques / uniques.
 
-All dynamic variables can be combined with strings, in order to generate dynamic / unique data.
-
-Example JSON body:
+Exemple de corps JSON:
 
 .. code-block:: json
 
     {"name": "John Doe", "email": "john.doe.{{$timestamp}}@example.com"}
 
-If you want to use dynamic variables in scripts, you can use the `replaceIn` starting with Postman v7.6.0. ::
+Si vous souhaitez utiliser des variables dynamiques dans les scripts, vous pouvez utiliser le `replaceIn` à partir de Postman v7.6.0. ::
 
-    pm.variables.replaceIn('{{$randomFirstName}}'); // returns a String
+    pm.variables.replaceIn('{{$randomFirstName}}'); // renvoie une chaîne
 
-For more details please see the section dedicated to :doc:`Dynamic variables </dynamic-variables>`
+Pour plus de détails, veuillez consulter la section dédiée à :doc:`Dynamic variables </dynamic-variables>`
 
-Logging / Debugging variables
------------------------------
+Variables de journalisation / débogage
+--------------------------------------
 
-Open Postman Console and use `console.log` in your test or pre-request script.
+Ouvrez Postman Console et utilisez `console.log` dans votre script de test ou de pré-requête.
 
-Example: ::
+Exemple: ::
 
     var myVar = pm.globals.get("myVar");
     console.log(myVar);
@@ -216,11 +217,11 @@ Example: ::
 Assertions
 ==========
 
-Note: You need to add any of the assertions inside a ``pm.test`` callback.
+Remarque: vous devez ajouter l'une des assertions dans un callback ``pm.test``.
 
-Example: ::
+Exemple: ::
 
-    pm.test("Your test name", function () {
+    pm.test("Le nom de votre test", function () {
         var jsonData = pm.response.json();
         pm.expect(jsonData.value).to.eql(100);
     });
@@ -228,121 +229,124 @@ Example: ::
 Status code
 -----------
 
-Check if status code is 200: ::
+Vérifier si le code d'état est 200: ::
 
     pm.response.to.have.status(200);
 
 
-Checking multiple status codes: ::
+Vérification de plusieurs codes d'état: ::
 
     pm.expect(pm.response.code).to.be.oneOf([201,202]);
 
 
-Response time
--------------
+Temps de résponse
+-----------------
 
-Response time below 100ms: ::
+Temps de résponse inférieur à 100ms: ::
 
     pm.expect(pm.response.responseTime).to.be.below(9);
 
-Headers
--------
+En-têtes
+--------
 
-Header exists: ::
+L'en-tête existe: ::
 
     pm.response.to.have.header(X-Cache');
 
-Header has value: ::
+L'en-tête a une valeur: ::
 
     pm.expect(pm.response.headers.get('X-Cache')).to.eql('HIT');
 
 Cookies
 -------
 
-Cookie exists: ::
+Le cookie existe: ::
 
     pm.expect(pm.cookies.has('sessionId')).to.be.true;
 
-Cookie has value: ::
+Le cookie a une valeur: ::
 
     pm.expect(pm.cookies.get('sessionId')).to.eql(’ad3se3ss8sg7sg3');
 
 
-Body
-----
+Corps
+-----
 
-**Any content type / HTML responses**
+** Tout type de contenu / réponses HTML **
 
-Exact body match: ::
+Correspondance exacte du corps: ::
 
     pm.response.to.have.body("OK");
     pm.response.to.have.body('{"success"=true}');
 
-Partial body match / body contains: ::
+Correspondance partielle / le corps contient: ::
 
     pm.expect(pm.response.text()).to.include('Order placed.');
 
-**JSON responses**
+**Réponses JSON **
 
-Parse body (need for all assertions): ::
+Analyser le corps (besoin de toutes les assertions): ::
 
     const response = pm.response.json();
 
-Simple value check: ::
+Vérification de la valeur simple: ::
 
     pm.expect(response.age).to.eql(30);
     pm.expect(response.name).to.eql('John);
 
-Nested value check: ::
+Vérification de la valeur imbriquée: ::
 
     pm.expect(response.products.0.category).to.eql('Detergent');
 
-**XML responses**
+**Réponses XML**
 
-Convert XML body to JSON: ::
+Convertir le corps XML en JSON: ::
 
     const response = xml2Json(responseBody);
 
-Note: see assertions for JSON responses.
+Remarque: consultez les assertions pour les réponses JSON.
 
-Skipping tests
---------------
+Ignorer des tests
+-----------------
 
-You can use `pm.test.skip` to skip a test. Skipped tests will be displayed in reports.
+Vous pouvez utiliser `pm.test.skip` pour sauter un test.
+Les tests ignorés seront affichés dans les rapports.
 
-**Simple example** ::
+** Exemple simple ** ::
 
     pm.test.skip("Status code is 200", () => {
         pm.response.to.have.status(200);
     });
 
-**Conditional skip** ::
+** Saut conditionnel ** ::
 
-    const shouldBeSkipped = true; // some condition
+    const shouldBeSkipped = true; // une condition
 
     (shouldBeSkipped ? pm.test.skip : pm.test)("Status code is 200", () => {
         pm.response.to.have.status(200);
     });
 
-Failing tests
--------------
+Provoquer l'échec d'un test
+---------------------------
 
-You can fail a test from the scripts without writing an assertion: ::
+Vous pouvez faire échouer un test à partir des scripts sans écrire une assertion: ::
 
     pm.expect.fail('This failed because ...');
 
-Postman Sandbox
-===============
+Bac à sable de Postman
+======================
 
 pm
 ---
 
-this is the object containing the script that is running, can access variables and has access to a read-only copy of the request or response.
+il s'agit de l'objet contenant le script en cours d'exécution, qui peut accéder aux variables et a accès à une copie en lecture seule de la demande ou de la réponse.
 
 pm.sendRequest
 --------------
 
-Allows to send **simple HTTP(S) GET requests** from tests and pre-request scripts. Example: ::
+Permet d'envoyer **des requêtes GET simples en HTTP(S)** à partir de tests et de scripts de pré-requête.
+
+Exemple: ::
 
     pm.sendRequest('https://httpbin.org/get', (error, response) => {
         if (error) throw new Error(error);
@@ -386,17 +390,16 @@ Full-option **HTTP POST request with JSON body**: ::
         console.log(response.json());
     });
 
-**Sending a file with form-data POST request**
+** Envoi d'un fichier avec demande POST form-data **
 
-Due to security precautions, it is not possible to upload a file from a script using pm.sendRequest. You cannot read or write files from scripts.
-
+Pour des raisons de sécurité, il n'est pas possible de télécharger un fichier à partir d'un script à l'aide de pm.sendRequest. Vous ne pouvez pas lire ou écrire des fichiers à partir de scripts.
 
 Postman Echo
 ============
 
-Helper API for testing requests. Read more at: https://docs.postman-echo.com.
+API Helper pour tester les demandes. Pour en savoir plus: https://docs.postman-echo.com.
 
-**Get Current UTC time in pre-request script** ::
+** Obtenir l'heure UTC actuelle via le script de pré-requête ** ::
 
     pm.sendRequest('https://postman-echo.com/time/now', function (err, res) {
         if (err) { console.log(err); }
