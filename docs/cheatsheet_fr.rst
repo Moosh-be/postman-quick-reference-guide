@@ -173,8 +173,7 @@ Les variables locales ne sont disponibles qu'avec la requête qui les a définie
 
 ** Quand utiliser: **
 
-- chaque fois que vous souhaitez remplacer toutes les autres portées de variables — pour une raison quelconque.
-Je ne suis pas sûr que cela soit nécessaire.
+- chaque fois que vous souhaitez remplacer toutes les autres portées de variables — pour une raison quelconque. Je ne suis pas sûr que cela soit nécessaire.
 
 **Ecrire** ::
 
