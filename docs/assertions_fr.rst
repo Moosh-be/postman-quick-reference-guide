@@ -56,8 +56,8 @@ Vérifier que la propriété isAllowed est vraie pour le filtre COUNTRY. ::
     });
 
 
-How find nested object by object name?
---------------------------------------
+Comment touver un object imbriqué pas le nom de l'objet ?
+---------------------------------------------------------
 
 Sur base de la réponse suivante: ::
 
@@ -68,13 +68,13 @@ Sur base de la réponse suivante: ::
                 "lists": {
                     "openPerBoard": {
                         "count": 13,
-                        "status": "ok", <-- CHECK ME
+                        "status": "ok", <-- VERIFIE MOI
                         "disableAt": 950,
                         "warnAt": 900
                     },
                     "totalPerBoard": {
                         "count": 20,
-                        "status": "ok",  <-- CHECK ME
+                        "status": "ok",  <-- VERIFIE MOI
                         "disableAt": 950,
                         "warnAt": 900
                     }
@@ -83,11 +83,13 @@ Sur base de la réponse suivante: ::
         }
     }
 
-You want to check the value of the `status` in both objects (openPerBoard, totalPerBoard). The problem is that in order to reach both objects you need first to reach the lists object, which itself is a property of a randomly named object (59974328d59230f9a3f946fe).
+Vous voulez vérifier la valeur de `status` dans les objets (openPerBoard, totalPerBoard).
+Le problème est que pour atteindre les deux objets, vous devez d'abord atteindre l'objet lists, qui est lui-même une propriété d'un objet nommé aléatoirement (59974328d59230f9a3f946fe).
 
-So we could write the whole path ``limits.59974328d59230f9a3f946fe.lists.openPerBoard.status`` but this will probably work only once.
+Nous pourrions donc écrire le chemin complet ``limits.59974328d59230f9a3f946fe.lists.openPerBoard.status`` mais cela ne fonctionnera probablement qu'une seule fois.
 
-For that reason it is first needed to search inside the ``limits`` object for the ``lists`` object. In order to make the code more readable, we will create a function for that: ::
+Pour cette raison, il est d'abord nécessaire de rechercher dans l'objet ``limits`` l'objet ``lists``.
+Afin de rendre le code plus lisible, nous allons créer une fonction pour cela: ::
 
     function findObjectContaininsLists(limits) {
         // Iterate over the properties (keys) in the object
@@ -101,9 +103,9 @@ For that reason it is first needed to search inside the ``limits`` object for th
         }
     }
 
-The function will iterate over the limits array to see if any object contains a ``lists`` object.
+La fonction parcourra le tableau des limites pour voir si un objet contient un objet ``lists``.
 
-Next all we need to do is to call the function and the assertions will be trivial: ::
+Ensuite, tout ce que nous devons faire est d'appeler la fonction et les assertions seront triviales: ::
 
     pm.test("Vérifier le statut", function () {
         // Parse JSON body
@@ -119,7 +121,7 @@ Next all we need to do is to call the function and the assertions will be trivia
 Comment comparer la valeur d'une réponse et une variable déjà défine ?
 ----------------------------------------------------------------------
 
-Lets presume you have a value from a previous response (or other source) that is saved to a variable. ::
+Supposons que vous ayez une valeur d'une réponse précédente (ou d'une autre source) qui est enregistrée dans une variable. ::
 
     // Récuperer les valeurs de la réponse
     var jsonData = pm.response.json();
@@ -128,11 +130,12 @@ Lets presume you have a value from a previous response (or other source) that is
     // Saving the value for later use
     pm.globals.set("username", username);
 
-How do you compare that variable with values from another API response?
+Comment comparez-vous cette variable avec les valeurs d'une autre réponse d'API?
 
-In order to access the variable in the script, you need to use a special method, basically the companion of setting a variable. Curly brackets will not work in this case: ::
+Pour accéder à la variable dans le script, vous devez utiliser une méthode spéciale, essentiellement le compagnon de la définition d'une variable.
+Les accolades ne fonctionneront pas dans ce cas: ::
 
-    pm.test("Your test name", function () {
+    pm.test("Le nom de votre test", function () {
         var jsonData = pm.response.json();
         pm.expect(jsonData.value).to.eql(pm.globals.get("username"));
     });
