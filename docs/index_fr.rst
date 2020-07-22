@@ -1,10 +1,10 @@
-.. Postman Quick Reference Guide documentation master file, created by
-   sphinx-quickstart on Mon Feb 12 21:41:07 2018.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+.. Postman Quick Reference Guide documentation master file, créé par
+   sphinx-quickstart le lundi 12 février 2018 21:41:07.
+   Vous pouvez adapter complètement ce fichier comme bon vous semble,
+   mais vous devez laisser au miniment la directive `toctree` à la racine.
 
-Welcome to Postman Quick Reference Guide's documentation!
-=========================================================
+Bienvenue dans la documentation Guide Rapid d'utilisation de Postman !
+======================================================================
 
 Cheatsheet
 ----------
@@ -15,7 +15,7 @@ Cheatsheet
 
    cheatsheet_fr
 
-Dynamic variables
+Variables dynamiques
 -----------------------------------
 
 .. toctree::
@@ -23,8 +23,8 @@ Dynamic variables
 
    dynamic-variables_fr.rst
 
-Simple solutions to common problems
------------------------------------
+Solutions simples pour problèmes communs
+----------------------------------------
 
 .. toctree::
    :maxdepth: 2
@@ -36,7 +36,7 @@ Simple solutions to common problems
    workflows_fr
    newman_fr
 
-Online course
+Cours en ligne
 ---------------
 
 .. toctree::
