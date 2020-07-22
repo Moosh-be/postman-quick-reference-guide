@@ -1,53 +1,53 @@
-*****************
-Dynamic variables
-*****************
+************************
+Les variables dynamiques
+************************
 
-Dynamic variables can be used in the request builder like this:
+Les variables dynamiques peuvent être utilisées dans le générateur de requêtes comme ceci:
 
 .. image:: _static/dynamic-variables.png
     :scale: 50 %
 
-If you want to use dynamic variables in scripts, you can use the `replaceIn` starting with Postman v7.6.0. ::
+Si vous souhaitez utiliser des variables dynamiques dans les scripts, vous pouvez utiliser le `replaceIn` à partir de Postman v7.6.0. ::
 
     pm.variables.replaceIn('{{$randomFirstName}}');
 
     pm.variables.replaceIn('{{$randomFirstName}} {{$randomLastName}}');
 
-The `replaceIn` method will return a String with the resolved variables.
+La méthode `replaceIn` retournera une chaîne avec les variables résolues.
 
-Before Postman 7.2, only the following dynamic variables were available:
+Avant Postman 7.2, seules les variables dynamiques suivantes étaient disponibles:
 
-+---------------+-----------------------------------------------------+--------------------------------------+
-| Variable name | Description                                         | Example                              |
-+===============+=====================================================+======================================+
-| $guid         | Generates a GUID (Globally Unique Identifier) in v4 | 15aacbb1-1615-47d8-b001-e5411a044761 |
-+---------------+-----------------------------------------------------+--------------------------------------+
-| $timestamp    | Returns the current timestamp                       | 1561013396                           |
-+---------------+-----------------------------------------------------+--------------------------------------+
-| $randomInt    | Generates  random integer between 0 and 1000        | 764                                  |
-+---------------+-----------------------------------------------------+--------------------------------------+
++-----------------+-------------------------------------------------------+--------------------------------------+
+| Nom de variable | Description                                           | Exemple                              |
++=================+=======================================================+======================================+
+| $guid           | Génère un GUID (identifiant global unique) dans la v4 | 15aacbb1-1615-47d8-b001-e5411a044761 |
++-----------------+-------------------------------------------------------+--------------------------------------+
+| $timestamp      | Renvoie l'horodatage actuel                           | 1561013396                           |
++-----------------+-------------------------------------------------------+--------------------------------------+
+| $randomInt      | Génère un entier aléatoire entre 0 et 1000            | 764                                  |
++-----------------+-------------------------------------------------------+--------------------------------------+
 
-Starting with version 7.2, Postman is using the faker.js library and added more variables. If used multiple times, they can return different values per request.
-Note: the autocomplete support in the Request Builder might be missing.
-
+Depuis la version 7.2, Postman utilise la bibliothèque faker.js et a ajouté plus de variables.
+S'elles sont utilisées plusieurs fois, elles peuvent renvoyer des valeurs différentes par demande.
+Remarque: la prise en charge de la saisie semi-automatique dans Request Builder peut être manquante.
 .. raw:: latex
 
     \begin{landscape}
 
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
-| Variable name                 | Description                                | Examples                                                                           | Comment |
+| Nom de variable               | Description                                | Exemple                              |
 +===============================+============================================+====================================================================================+=========+
 | $randomZipCode                | ZIP Code                                   | 83932, 40260-4447                                                                  | [1]_    |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
-| $randomCity                   | City                                       | East Ryanfurt, Jenkinsview                                                         |         |
+| $randomCity                   | Ville                                      | East Ryanfurt, Jenkinsview                                                         |         |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
 | $randomCityPrefix             | City prefix                                | Port, West, East, Lake, New                                                        |         |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
 | $randomCitySuffix             | City suffix                                | mouth, borough, town, berg                                                         |         |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
-| $randomStreetName             | Street name                                | Mckenna Pines, Schiller Highway, Vandervort Pike                                   | [2]_    |
+| $randomStreetName             | Nom de rue                                 | Mckenna Pines, Schiller Highway, Vandervort Pike                                   | [2]_    |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
-| $randomStreetAddress          | Street with number                         | 98165 Tanya Passage, 0695 Monahan Squares                                          | [3]_    |
+| $randomStreetAddress          | Nom et numéro de rue                       | 98165 Tanya Passage, 0695 Monahan Squares                                          | [3]_    |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
 | $randomStreetSuffix           | Street suffix                              | Field, Bridge, Keys, Greens, Route                                                 |         |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
@@ -55,13 +55,13 @@ Note: the autocomplete support in the Request Builder might be missing.
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
 | $randomSecondaryAddress       | Additional address information             | Suite 760, Apt. 636, Suite 043                                                     | [5]_    |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
-| $randomCounty                 | County                                     | Bedfordshire, Cambridgeshire                                                       | [6]_    |
+| $randomCounty                 | Comté/Province                             | Bedfordshire, Cambridgeshire                                                       | [6]_    |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
-| $randomCountry                | Country                                    | Belgium, Antarctica (the territory South of 60 deg S)                              |         |
+| $randomCountry                | Pays                                       | Belgium, Antarctica (the territory South of 60 deg S)                              |         |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
-| $randomCountryCode            | Country code (2-letter)                    | GY, TK, BG                                                                         |         |
+| $randomCountryCode            | Code Pays (2 lettres)                      | GY, TK, BG                                                                         |         |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
-| $randomState                  | Random state                               | Arizona, South Dakota, Delaware                                                    | [7]_    |
+| $randomState                  | État                                       | Arizona, South Dakota, Delaware                                                    | [7]_    |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
 | $randomStateAbbr              | Random state code (2-letter)               | GA, LA, AZ                                                                         | [8]_    |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
@@ -69,13 +69,13 @@ Note: the autocomplete support in the Request Builder might be missing.
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
 | $randomLongitude              | Longitude                                  | -41.5763, 10.4960                                                                  |         |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
-| $randomColor                  | Color                                      | lime, azure, maroon, gold, violet                                                  |         |
+| $randomColor                  | Couleur                                    | lime, azure, maroon, gold, violet                                                  |         |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
-| $randomDepartment             | Departments in a store                     | Garden, Clothing, Grocery, Kids                                                    |         |
+| $randomDepartment             | Departements de magasin                    | Garden, Clothing, Grocery, Kids                                                    |         |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
 | $randomProductName            | Product name                               | Intelligent Steel Sausages, Awesome Rubber Cheese                                  |         |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
-| $randomPrice                  | Price                                      | 244.00, 301.00                                                                     | [9]_    |
+| $randomPrice                  | Prix                                       | 244.00, 301.00                                                                     | [9]_    |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
 | $randomProductAdjective       | Product adjective                          | Refined, Handcrafted, Handmade, Sleek                                              |         |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
@@ -83,7 +83,7 @@ Note: the autocomplete support in the Request Builder might be missing.
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
 | $randomProduct                | Simple product name                        | Salad, Cheese, Bike, Soap                                                          |         |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
-| $randomCompanyName            | Company name                               | Christiansen LLC, Corwin Inc, Fahey - Boyer                                        |         |
+| $randomCompanyName            | Nom de Compagnie                           | Christiansen LLC, Corwin Inc, Fahey - Boyer                                        |         |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
 | $randomCompanySuffix          | Company suffix                             | LLC, Group, Inc, and Sons                                                          |         |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
@@ -109,19 +109,19 @@ Note: the autocomplete support in the Request Builder might be missing.
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
 | $randomDatabaseCollation      | Database collation                         | utf8_general_ci, utf8_bin                                                          |         |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
-| $randomDatabaseEngine         | Database engine                            | MEMORY, InnoDB, CSV, MyISAM                                                        |         |
+| $randomDatabaseEngine         | Moteur de base de données                  | MEMORY, InnoDB, CSV, MyISAM                                                        |         |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
-| $randomDatePast               | Date in the past                           | Wed Mar 06 2019 04:17:52 GMT+0800 (WITA)                                           |         |
+| $randomDatePast               | Date dans le passé                         | Wed Mar 06 2019 04:17:52 GMT+0800 (WITA)                                           |         |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
-| $randomDateFuture             | Date in the future                         | Wed Nov 20 2019 20:26:40 GMT+0800 (WITA)                                           |         |
+| $randomDateFuture             | Date dans le futur                         | Wed Nov 20 2019 20:26:40 GMT+0800 (WITA)                                           |         |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
 | $randomDateBetween            | ???                                        | Invalid Date                                                                       | [10]_   |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
-| $randomDateRecent             | Recent date                                | Thu Jun 20 2019 13:29:11 GMT+0800 (WITA)                                           |         |
+| $randomDateRecent             | Date récente                               | Thu Jun 20 2019 13:29:11 GMT+0800 (WITA)                                           |         |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
-| $randomMonth                  | Month                                      | February, April                                                                    |         |
+| $randomMonth                  | Mois                                       | February, April                                                                    |         |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
-| $randomWeekday                | Weekdat                                    | Saturday, Monday                                                                   |         |
+| $randomWeekday                | Jour de semaine                            | Saturday, Monday                                                                   |         |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
 | $randomBankAccount            | Bank account (8-digit)                     | 58484223, 18983115                                                                 |         |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
@@ -129,15 +129,15 @@ Note: the autocomplete support in the Request Builder might be missing.
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
 | $randomCreditCardMask         | Masked credit card number (4-digit)        | 7333, 6202                                                                         |         |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
-| $randomCurrencyAmount         | Amount                                     | 297.80, 529.26                                                                     |         |
+| $randomCurrencyAmount         | Montant                                    | 297.80, 529.26                                                                     |         |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
-| $randomTransactionType        | Transaction type                           | invoice, deposit, withdrawal, payment                                              |         |
+| $randomTransactionType        | Type de transaction                        | invoice, deposit, withdrawal, payment                                              |         |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
-| $randomCurrencyCode           | Currency code                              | THB, HTG USD, AUD                                                                  |         |
+| $randomCurrencyCode           | Devise (code)                              | THB, HTG USD, AUD                                                                  |         |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
-| $randomCurrencyName           | Currency name                              | Pound Sterling, Bulgarian Lev                                                      |         |
+| $randomCurrencyName           | Devise (nom)                               | Pound Sterling, Bulgarian Lev                                                      |         |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
-| $randomCurrencySymbol         | Currency symbol                            | $, лв, Kč                                                                          |         |
+| $randomCurrencySymbol         | Symbole de devise                          | $, лв, Kč                                                                          |         |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
 | $randomBitcoin                | ???                                        | 1XEW2WNQXFLUPQJU8F3D6OCJHV9UR                                                      | [11]_   |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
@@ -145,23 +145,23 @@ Note: the autocomplete support in the Request Builder might be missing.
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
 | $randomBankAccountBic         | BIC                                        | YQCIFMA1762                                                                        | [13]_   |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
-| $randomAbbreviation           | Abbreviation                               | RSS, SQL, TCP, HTTP, SMS                                                           |         |
+| $randomAbbreviation           | Abréviation                                | RSS, SQL, TCP, HTTP, SMS                                                           |         |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
-| $randomAdjective              | Adjective                                  | virtual, solid state, digital                                                      |         |
+| $randomAdjective              | Adjectif                                   | virtual, solid state, digital                                                      |         |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
 | $randomNoun                   | Noun                                       | microchip, interface, system, firewall                                             |         |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
-| $randomVerb                   | Verb                                       | connect, parse, navigate, synthesize                                               |         |
+| $randomVerb                   | Verbe                                      | connect, parse, navigate, synthesize                                               |         |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
 | $randomIngverb                | Verb with -ing                             | bypassing, copying, programming                                                    |         |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
 | $randomPhrase                 | Phrase                                     | We need to copy the online CSS microchip!                                          |         |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
-| $randomImage                  | Image URL                                  | http://lorempixel.com/640/480/people                                               |         |
+| $randomImage                  | URL d'image                                | http://lorempixel.com/640/480/people                                               |         |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
 | $randomAvatarImage            | Avatar image URL                           | https://s3.amazonaws.com/uifaces/faces/twitter/jacksonlatka/128.jpg                |         |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
-| $randomImageUrl               | Image URL                                  | http://lorempixel.com/640/480                                                      |         |
+| $randomImageUrl               | URL d'image                                | http://lorempixel.com/640/480                                                      |         |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
 | $randomAbstractImage          | Abstract image                             | http://lorempixel.com/640/480/abstract                                             |         |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
@@ -195,7 +195,7 @@ Note: the autocomplete support in the Request Builder might be missing.
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
 | $randomExampleEmail           | Example email                              | Ayla.Kozey27@example.net, Adrian.Hickle@example.com                                |         |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
-| $randomUserName               | Username                                   | Minerva42, Shania_Nitzsche                                                         |         |
+| $randomUserName               | Nom d'utilisateur                          | Minerva42, Shania_Nitzsche                                                         |         |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
 | $randomProtocol               | HTTP Protocol                              | http, https                                                                        |         |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
@@ -213,11 +213,11 @@ Note: the autocomplete support in the Request Builder might be missing.
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
 | $randomUserAgent              | Browser User-agent                         | Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 5.2; Trident/5.1)                   |         |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
-| $randomHexColor               | Color in hex format                        | #010638, #010638                                                                   |         |
+| $randomHexColor               | Couleur format hexadécimal                 | #010638, #010638                                                                   |         |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
 | $randomMACAddress             | MAC address                                | 15:12:78:1e:96:fe, 99:f4:aa:40:49:59                                               |         |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
-| $randomPassword               | Password                                   | v_Ptr4aTaBONsM0, 8xQM6pKgBUndK_J                                                   |         |
+| $randomPassword               | Mot de passe                               | v_Ptr4aTaBONsM0, 8xQM6pKgBUndK_J                                                   |         |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
 | $randomLoremWord              | Lorem ipsum word                           | ipsa, dolor, dicta                                                                 |         |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
@@ -237,21 +237,21 @@ Note: the autocomplete support in the Request Builder might be missing.
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
 | $randomLoremLines             | Lorem ipsum text                           |  aliquid enim reiciendis ...                                                       | [17]_   |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
-| $randomFirstName              | First name                                 | Dillan, Sedrick, Daniela                                                           |         |
+| $randomFirstName              | Prénom                                     | Dillan, Sedrick, Daniela                                                           |         |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
-| $randomLastName               | Last name                                  | Schamberger, McCullough, Becker                                                    |         |
+| $randomLastName               | Nom                                        | Schamberger, McCullough, Becker                                                    |         |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
-| $randomFullName               | Full name                                  | Layne Adams, Bridget O'Reilly III                                                  |         |
+| $randomFullName               | Nom complet                                | Layne Adams, Bridget O'Reilly III                                                  |         |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
-| $randomJobTitle               | Job title                                  | Product Usability Consultant, Product Mobility Architect                           |         |
+| $randomJobTitle               | Intitulé de poste                          | Product Usability Consultant, Product Mobility Architect                           |         |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
 | $randomNamePrefix             | Personal title (used as prefix)            | Miss, Mrs., Mr., Ms                                                                |         |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
 | $randomNameSuffix             | Title (used as suffix)                     | I, II, Sr., MD, PhD                                                                |         |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
-| $randomNameTitle              | Job title                                  | Product Markets Administrator, Internal Functionality Producer                     | [18]_   |
+| $randomNameTitle              | Intitulé de poste                          | Product Markets Administrator, Internal Functionality Producer                     | [18]_   |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
-| $randomJobDescriptor          | Job title descriptor                       | Corporate, Global, International, Chief, Lead                                      |         |
+| $randomJobDescriptor          | Complément d'intitulé de poste             | Corporate, Global, International, Chief, Lead                                      |         |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
 | $randomJobArea                | Job area                                   | Creative, Markets, Tactics                                                         |         |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
@@ -281,6 +281,7 @@ Note: the autocomplete support in the Request Builder might be missing.
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
 | $randomFileName               | Filename                                   | soft_smtp.wvx, calculate.grv                                                       |         |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
++-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
 | $randomCommonFileName         | Common filename                            | mall.pdf, chair.mp4, facilitator.mp3                                               |         |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
 | $randomMimeType               | MIME type                                  | application/x-font-bdf, application/omdoc+xml                                      |         |
@@ -292,7 +293,6 @@ Note: the autocomplete support in the Request Builder might be missing.
 | $randomFileType               | File type                                  | x-shader, font, audio, message                                                     |         |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
 | $randomFileExt                | File extension                             | xsm, zirz, xar                                                                     |         |
-+-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
 | $randomDirectoryPath          | Directory path                             |                                                                                    | [24]_   |
 +-------------------------------+--------------------------------------------+------------------------------------------------------------------------------------+---------+
 | $randomFilePath               | File path                                  |                                                                                    | [25]_   |
@@ -305,9 +305,9 @@ Note: the autocomplete support in the Request Builder might be missing.
     \end{landscape}
 
 
-.. [1] Not really useful as you cannot specify a country. 
+.. [1] Not really useful as you cannot specify a country.
 .. [2] Limited usability as you cannot specify a country.
-.. [3] Warning: it may generate invalid data, with street numbers starting with 0. Limited usability as you cannot specify a country. 
+.. [3] Warning: it may generate invalid data, with street numbers starting with 0. Limited usability as you cannot specify a country.
 .. [4] Not sure what a street prefix is. Unknown usage.
 .. [5] Warning: it may generate invalid data, with numbers starting with 0. Limited usability as you cannot specify a country.
 .. [6] Limited usability as you cannot specify a country.
@@ -330,4 +330,3 @@ Note: the autocomplete support in the Request Builder might be missing.
 .. [23] Seems broken as it returns only "en".
 .. [24] Seems broken.
 .. [25] Seems broken.
-
