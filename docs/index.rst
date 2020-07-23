@@ -14,7 +14,6 @@ Cheatsheet
    :caption: Contents:
 
    cheatsheet
-   index_fr
 
 Dynamic variables
 -----------------------------------
@@ -45,3 +44,12 @@ Online course
    :caption: Additional resourses:
 
    course
+
+Translations
+---------------
+
+.. toctree::
+   :maxdepth: 3
+   :caption: Traductions
+
+   index_fr
