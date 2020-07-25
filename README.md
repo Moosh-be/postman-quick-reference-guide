@@ -8,5 +8,5 @@ Feel free to fork and send me a pull request with any changes you think are rele
 
 ## Build
 
-[![Build Status](https://travis-ci.com/vdespa/postman-quick-reference-guide.svg?branch=master)](https://travis-ci.com/vdespa/postman-quick-reference-guide)
-(Temporary during initial translation work) [![Build Status](https://travis-ci.com/Moosh-be/postman-quick-reference-guide.svg?branch=master)](https://travis-ci.com/Moosh-be/postman-quick-reference-guide)
+* [![Build Status](https://travis-ci.com/vdespa/postman-quick-reference-guide.svg?branch=master)](https://travis-ci.com/vdespa/postman-quick-reference-guide)
+* (Temporary during initial translation work) [![Build Status](https://travis-ci.com/Moosh-be/postman-quick-reference-guide.svg?branch=master)](https://travis-ci.com/Moosh-be/postman-quick-reference-guide)
